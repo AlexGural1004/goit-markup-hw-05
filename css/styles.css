@@ -11,6 +11,9 @@
     --footer-conntacts:color: rgba(255, 255, 255, 0.6);
     --solid: #ECECEC;
     --buttons-color: #F5F4FA;
+    --timing: 250ms;
+    --timing-function:cubic-bezier(0.4, 0, 0.2, 1);
+
     }
 
 .container{
@@ -59,6 +62,7 @@ li{
     }
 
 .our-classes{
+    position: relative;
      display: flex;
      margin-top: 0px;
      margin-bottom: 0px;
@@ -80,6 +84,7 @@ li{
     }
 
 .link{
+    position: relative;
     display: block;
     padding-top:32px;
     padding-bottom:32px;
@@ -89,6 +94,39 @@ li{
     letter-spacing: 0.1em;
     color: var(--primary-text-color);
     }
+
+.link::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    left: 0px;
+    bottom: 0;
+    opacity: 0;
+    background: var(--button-color);
+    border-radius: 2px;
+    transition-property: opacity;
+    transition: opacity var(--timing) var(--timing-function);
+
+    }
+.link:focus::after,
+.link:hover::after{
+   opacity: 1;
+}
+
+.link-underline::after{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    left: 0px;
+    bottom: 0;
+    opacity: 1;
+    background: var(--button-color);
+    border-radius: 2px;
+}
 
 .container>.types-of-works{
     display: flex;
@@ -107,14 +145,14 @@ li{
     width: 370px;
     height: 404px;
     border: 2px solid #EEEEEE;
+    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
     }
 
+.portfolio-link:focus,
 .portfolio-link:hover{
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
     }
-.portfolio-link:focus{
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
-    }
+
 
 .types-of-works>.flex-element:nth-last-child(-n+3){
     margin-bottom: 0px;
@@ -197,6 +235,7 @@ body{
     color: var(--black);
     margin-top: 0;
     margin-bottom: 0;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
     }
 
 .link-tel{
@@ -214,11 +253,8 @@ body{
      margin-right: 10px;   
     }
 
+.link:focus,
 .link:hover{
-    color:var(--button-color);
-    }
-
-.link:focus{
     color:var(--button-color);
     }
 
@@ -288,6 +324,9 @@ h4{
     display: flex;
     }
 
+
+
+}
 .our-team{
     margin-top: 0;
     margin-bottom: 30px;  
@@ -298,7 +337,7 @@ h4{
     margin-right: 30px;
     }
 
-button{
+.button-standart{
     font-family: Roboto;
     font-style: normal;
     font-weight: 500;
@@ -307,12 +346,21 @@ button{
     margin-right: 8px;
     margin-top: 0px;
     border: none;
-    background:var(--buttons-color);
+    background-color:var(--buttons-color);
     border-radius: 4px;
     padding-top: 6px;
     padding-bottom:6px ;
     padding-left: 22px;
     padding-right: 22px;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1) ;
+    }
+
+.button-standart:focus,
+.button-standart:hover{
+    background-color: #2196F3;
+    color:var(--h1-color);
+    cursor: pointer;
+    box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
     }
 
 .buttons{
@@ -412,10 +460,8 @@ button{
     padding: 0px;
     }
 
-.our-benefits-element:hover{
-    fill:var(--button-color);
-    }
 
+.our-benefits-element:hover,
 .our-benefits-element:focus{
     display: block;
     fill:var(--button-color);
@@ -445,7 +491,9 @@ button{
     margin-top: 30px;
     margin-bottom: 200px;
     margin-left: auto;
-    margin-right: auto;   
+    margin-right: auto;  
+    transition-property: color;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
     }
 
 .main-hero{
@@ -455,12 +503,9 @@ button{
     margin-right: auto;
     }
 
+.button-blue:focus,
 .button-blue:hover{
-    color: black;
-    }
-
-.button-blue:focus{
-    color: black;
+    color: var(--logo-color);
     }
 
 .section-our-team-text{
@@ -519,33 +564,7 @@ a{
     margin-right: auto;   
     }
 
-.buttons .button-standart:hover{
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 1.63;
-    background: #2196F3;
-    color:var(--h1-color);
-    cursor: pointer;
-    margin-left: auto;
-    margin-right: 8px;   
-    border-radius: 4px;
-    border: none;
-    box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
-    }
 
-.button-standart:focus{
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 1.63;
-    background: #2196F3;
-    color:var(--h1-color);
-    cursor: pointer;
-    margin-left: auto;
-    margin-right: 8px;   
-    border-radius: 4px;
-    border: none;
-    box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
-    }
 
 .hidden-header{        
     position: absolute;
@@ -594,12 +613,34 @@ a{
     }
 
 .our-classes > .flex-elememt{
+    position: relative;
     display: flex;
     align-items: center;
     width: 380px;
     margin-right: 30px;
     }
 
+.our-classes-overlay{
+    position: absolute;
+    width: 370px;
+    height: 70px;
+    bottom:0;
+    text-align: center;
+    background: rgba(47, 48, 58, 0.8);
+
+}
+
+.our-classes-text{
+font-weight: bold;
+font-size: 14px;
+line-height: 16px;
+text-align: center;
+letter-spacing: 0.03em;
+text-transform: uppercase;
+color:var(--h1-color);
+margin-top: 27px;
+
+}
 .hero-section{
     background-color: var(--background-hero); 
     text-align: center;
@@ -664,20 +705,19 @@ background-image:linear-gradient(
     margin: 0px;
     width: 170px;
     height: 90px;
+    border-radius: 4px;
     fill:#AFB1B8;
+    border:1px solid #AFB1B8;
+    transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1), fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
     }
 
+.clients-logo-class:focus,
 .clients-logo-class:hover{
     fill: var(--logo-text-color);
     border: 1px solid var(--logo-text-color);
     border-radius: 4px;
     }
 
-.clients-logo-class:focus{
-    fill: var(--logo-text-color);
-    border: 1px solid var(--logo-text-color);
-    border-radius: 4px;
-    }
 
 .names-social-networks{
     display: flex;
@@ -690,8 +730,17 @@ background-image:linear-gradient(
 
 .names-icon-link{
     display: block;
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    padding: 12px;
+    border-radius: 50%;
+    fill: #AFB1B8;
+    background-color: var(--h1-color);
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
     }
 
+.names-icon-link:focus,
 .names-icon-link:hover{
     border-radius: 50%;
     fill:var(--h1-color);
@@ -700,26 +749,9 @@ background-image:linear-gradient(
     border:var(--logo-text-color);
     }
 
-.names-icon-link:focus{
-    display: block;
-    border-radius: 50%;
-    fill:var(--background-color);
-    background-color: var(--logo-text-color);
-    color: var(--logo-text-color);
-    border:var(--logo-text-color);
-    }
-
 .names-icon{
     height: 44px;
     margin-right: 10px;
-    }
-
-.names-icon-link {
-    width: 20px;
-    height: 20px;
-    margin: 0;
-    padding: 12px;
-    fill: #AFB1B8;;
     }
 
 .names-icon:hover{
@@ -817,16 +849,16 @@ background-image:linear-gradient(
     border-radius: 50%;
     background-color:rgba(255, 255, 255, 0.1);;
     box-sizing: border-box;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
     }
 
+.footer-icon-link:focus,
 .footer-icon-link:hover{
     background-color:var(--logo-text-color);
     }
 
-.footer-icon-link:focus{
-    background-color:var(--logo-text-color);
-    }
 
 .link-buttons:hover{
     color: var(--button-color);
 }
+
